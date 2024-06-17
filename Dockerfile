@@ -1,6 +1,8 @@
 # syntax=docker/dockerfile:1
 
-FROM --platform=$BUILDPLATFORM caddy:2.7.6-builder AS builder
+ARG CADDY_VERSION=2.8.6
+
+FROM --platform=$BUILDPLATFORM caddy:$CADDY_VERSION-builder AS builder
 
 ARG TARGETPLATFORM
 RUN <<eot
@@ -15,6 +17,6 @@ RUN <<eot
     CGO_ENABLED=0 xcaddy build --with github.com/caddy-dns/route53
 eot
 
-FROM caddy:2.7.6
+FROM caddy:$CADDY_VERSION
 
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
