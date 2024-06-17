@@ -14,7 +14,7 @@ RUN <<eot
       *           ) echo "unsupported platform $TARGETPLATFORM"; exit 1;;
     esac
 
-    CGO_ENABLED=0 xcaddy build --with github.com/caddy-dns/route53
+    CGO_ENABLED=0 xcaddy build --with github.com/caddy-dns/route53 --replace github.com/libdns/route53=github.com/winterqt/libdns-route53@017a75a1a73834ad388f91905b76d0d88d2aba5e
 eot
 
 FROM caddy:$CADDY_VERSION
