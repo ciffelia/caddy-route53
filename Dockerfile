@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-ARG CADDY_VERSION=2.8.6
+ARG CADDY_VERSION=2.8.4
 
 FROM --platform=$BUILDPLATFORM caddy:$CADDY_VERSION-builder AS builder
 
